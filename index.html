@@ -7,10 +7,15 @@
     <title>Document</title>
 </head>
 <body>
+    <div>
+        <button id="clone">Clone input</button>
+        <button id="delete">Delete input</button>
+    </div>
     <form>
         <div id="addProduct">
             <div class="products">
-                <input type="text" name="name">
+                <input type="text" name="name" placeholder="Product name">
+                <input type="text" name="color" placeholder="Color">
             </div>
         </div>
         
@@ -18,29 +23,16 @@
             <button id="create">Create</button>
         </div>
     </form>
-    <div>
-        <button id="add">Add new input</button>
-        <button id="delete">Delete input</button>
-        <button id="clone">Clone input</button>
-    </div>
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
-            $("#add").click(function () {
-                $("#addProduct").append([
-                    "<div class='products'>" +
-                        "<input type='text' name='product'>" +
-                    "</div>",
-                ]);
-            });
-
             $("#delete").click(function () { 
-                $(".products").last().remove();
+                $(".products").not(".products:first").last().remove();
             });
 
             $("#clone").click(function () {
-                $(".products").last().clone().prependTo("#addProduct");
+                $(".products:last").clone().prependTo("#addProduct");
             });
         });
     </script>
