@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <div id="addProduct">
+            <div class="products">
+                <input type="text" name="name">
+            </div>
+        </div>
+        
+        <div>
+            <button id="create">Create</button>
+        </div>
+    </form>
+    <div>
+        <button id="add">Add new input</button>
+        <button id="delete">Delete input</button>
+        <button id="clone">Clone input</button>
+    </div>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        var i = 0;
+        $(document).ready(function () {
+            $("#add").click(function () {
+                $("#addProduct").append([
+                    "<div class='products'>" +
+                        "<input type='text' name='product'>" +
+                    "</div>",
+                ]);
+            });
+
+            $("#delete").click(function () { 
+                $(".products").last().remove();
+            });
+
+            $("#clone").click(function () {
+                $(".products").last().clone().prependTo("#addProduct");
+            });
+        });
+    </script>
+</body>
+</html>
